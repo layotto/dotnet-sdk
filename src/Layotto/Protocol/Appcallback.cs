@@ -25,31 +25,35 @@ namespace Layotto.Protocol {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFhcHBjYWxsYmFjay5wcm90bxIVc3BlYy5wcm90by5ydW50aW1lLnYxGhtn",
-            "b29nbGUvcHJvdG9idWYvZW1wdHkucHJvdG8ioAEKEVRvcGljRXZlbnRSZXF1",
+            "b29nbGUvcHJvdG9idWYvZW1wdHkucHJvdG8imwIKEVRvcGljRXZlbnRSZXF1",
             "ZXN0EgoKAmlkGAEgASgJEg4KBnNvdXJjZRgCIAEoCRIMCgR0eXBlGAMgASgJ",
             "EhQKDHNwZWNfdmVyc2lvbhgEIAEoCRIZChFkYXRhX2NvbnRlbnRfdHlwZRgF",
             "IAEoCRIMCgRkYXRhGAcgASgMEg0KBXRvcGljGAYgASgJEhMKC3B1YnN1Yl9u",
-            "YW1lGAggASgJIqYBChJUb3BpY0V2ZW50UmVzcG9uc2USUgoGc3RhdHVzGAEg",
-            "ASgOMkIuc3BlYy5wcm90by5ydW50aW1lLnYxLlRvcGljRXZlbnRSZXNwb25z",
-            "ZS5Ub3BpY0V2ZW50UmVzcG9uc2VTdGF0dXMiPAoYVG9waWNFdmVudFJlc3Bv",
-            "bnNlU3RhdHVzEgsKB1NVQ0NFU1MQABIJCgVSRVRSWRABEggKBERST1AQAiJh",
-            "Ch5MaXN0VG9waWNTdWJzY3JpcHRpb25zUmVzcG9uc2USPwoNc3Vic2NyaXB0",
-            "aW9ucxgBIAMoCzIoLnNwZWMucHJvdG8ucnVudGltZS52MS5Ub3BpY1N1YnNj",
-            "cmlwdGlvbiKyAQoRVG9waWNTdWJzY3JpcHRpb24SEwoLcHVic3ViX25hbWUY",
-            "ASABKAkSDQoFdG9waWMYAiABKAkSSAoIbWV0YWRhdGEYAyADKAsyNi5zcGVj",
-            "LnByb3RvLnJ1bnRpbWUudjEuVG9waWNTdWJzY3JpcHRpb24uTWV0YWRhdGFF",
-            "bnRyeRovCg1NZXRhZGF0YUVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgC",
-            "IAEoCToCOAEy3wEKC0FwcENhbGxiYWNrEmkKFkxpc3RUb3BpY1N1YnNjcmlw",
-            "dGlvbnMSFi5nb29nbGUucHJvdG9idWYuRW1wdHkaNS5zcGVjLnByb3RvLnJ1",
-            "bnRpbWUudjEuTGlzdFRvcGljU3Vic2NyaXB0aW9uc1Jlc3BvbnNlIgASZQoM",
-            "T25Ub3BpY0V2ZW50Eiguc3BlYy5wcm90by5ydW50aW1lLnYxLlRvcGljRXZl",
-            "bnRSZXF1ZXN0Gikuc3BlYy5wcm90by5ydW50aW1lLnYxLlRvcGljRXZlbnRS",
-            "ZXNwb25zZSIAQkJaLW1vc24uaW8vbGF5b3R0by9zcGVjL3Byb3RvL3J1bnRp",
-            "bWUvdjE7cnVudGltZaoCEExheW90dG8uUHJvdG9jb2xiBnByb3RvMw=="));
+            "YW1lGAggASgJEkgKCG1ldGFkYXRhGAogAygLMjYuc3BlYy5wcm90by5ydW50",
+            "aW1lLnYxLlRvcGljRXZlbnRSZXF1ZXN0Lk1ldGFkYXRhRW50cnkaLwoNTWV0",
+            "YWRhdGFFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIqYB",
+            "ChJUb3BpY0V2ZW50UmVzcG9uc2USUgoGc3RhdHVzGAEgASgOMkIuc3BlYy5w",
+            "cm90by5ydW50aW1lLnYxLlRvcGljRXZlbnRSZXNwb25zZS5Ub3BpY0V2ZW50",
+            "UmVzcG9uc2VTdGF0dXMiPAoYVG9waWNFdmVudFJlc3BvbnNlU3RhdHVzEgsK",
+            "B1NVQ0NFU1MQABIJCgVSRVRSWRABEggKBERST1AQAiJhCh5MaXN0VG9waWNT",
+            "dWJzY3JpcHRpb25zUmVzcG9uc2USPwoNc3Vic2NyaXB0aW9ucxgBIAMoCzIo",
+            "LnNwZWMucHJvdG8ucnVudGltZS52MS5Ub3BpY1N1YnNjcmlwdGlvbiKyAQoR",
+            "VG9waWNTdWJzY3JpcHRpb24SEwoLcHVic3ViX25hbWUYASABKAkSDQoFdG9w",
+            "aWMYAiABKAkSSAoIbWV0YWRhdGEYAyADKAsyNi5zcGVjLnByb3RvLnJ1bnRp",
+            "bWUudjEuVG9waWNTdWJzY3JpcHRpb24uTWV0YWRhdGFFbnRyeRovCg1NZXRh",
+            "ZGF0YUVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEy3wEK",
+            "C0FwcENhbGxiYWNrEmkKFkxpc3RUb3BpY1N1YnNjcmlwdGlvbnMSFi5nb29n",
+            "bGUucHJvdG9idWYuRW1wdHkaNS5zcGVjLnByb3RvLnJ1bnRpbWUudjEuTGlz",
+            "dFRvcGljU3Vic2NyaXB0aW9uc1Jlc3BvbnNlIgASZQoMT25Ub3BpY0V2ZW50",
+            "Eiguc3BlYy5wcm90by5ydW50aW1lLnYxLlRvcGljRXZlbnRSZXF1ZXN0Giku",
+            "c3BlYy5wcm90by5ydW50aW1lLnYxLlRvcGljRXZlbnRSZXNwb25zZSIAQmsK",
+            "FXNwZWMucHJvdG8ucnVudGltZS52MUIQQXBwQ2FsbGJhY2tQcm90b1otbW9z",
+            "bi5pby9sYXlvdHRvL3NwZWMvcHJvdG8vcnVudGltZS92MTtydW50aW1lqgIQ",
+            "TGF5b3R0by5Qcm90b2NvbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Layotto.Protocol.TopicEventRequest), global::Layotto.Protocol.TopicEventRequest.Parser, new[]{ "Id", "Source", "Type", "SpecVersion", "DataContentType", "Data", "Topic", "PubsubName" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Layotto.Protocol.TopicEventRequest), global::Layotto.Protocol.TopicEventRequest.Parser, new[]{ "Id", "Source", "Type", "SpecVersion", "DataContentType", "Data", "Topic", "PubsubName", "Metadata" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Layotto.Protocol.TopicEventResponse), global::Layotto.Protocol.TopicEventResponse.Parser, new[]{ "Status" }, null, new[]{ typeof(global::Layotto.Protocol.TopicEventResponse.Types.TopicEventResponseStatus) }, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Layotto.Protocol.ListTopicSubscriptionsResponse), global::Layotto.Protocol.ListTopicSubscriptionsResponse.Parser, new[]{ "Subscriptions" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Layotto.Protocol.TopicSubscription), global::Layotto.Protocol.TopicSubscription.Parser, new[]{ "PubsubName", "Topic", "Metadata" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
@@ -105,6 +109,7 @@ namespace Layotto.Protocol {
       data_ = other.data_;
       topic_ = other.topic_;
       pubsubName_ = other.pubsubName_;
+      metadata_ = other.metadata_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -240,6 +245,20 @@ namespace Layotto.Protocol {
       }
     }
 
+    /// <summary>Field number for the "metadata" field.</summary>
+    public const int MetadataFieldNumber = 10;
+    private static readonly pbc::MapField<string, string>.Codec _map_metadata_codec
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 82);
+    private readonly pbc::MapField<string, string> metadata_ = new pbc::MapField<string, string>();
+    /// <summary>
+    /// add a map to pass some extra properties.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, string> Metadata {
+      get { return metadata_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -263,6 +282,7 @@ namespace Layotto.Protocol {
       if (Data != other.Data) return false;
       if (Topic != other.Topic) return false;
       if (PubsubName != other.PubsubName) return false;
+      if (!Metadata.Equals(other.Metadata)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -278,6 +298,7 @@ namespace Layotto.Protocol {
       if (Data.Length != 0) hash ^= Data.GetHashCode();
       if (Topic.Length != 0) hash ^= Topic.GetHashCode();
       if (PubsubName.Length != 0) hash ^= PubsubName.GetHashCode();
+      hash ^= Metadata.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -328,6 +349,7 @@ namespace Layotto.Protocol {
         output.WriteRawTag(66);
         output.WriteString(PubsubName);
       }
+      metadata_.WriteTo(output, _map_metadata_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -370,6 +392,7 @@ namespace Layotto.Protocol {
         output.WriteRawTag(66);
         output.WriteString(PubsubName);
       }
+      metadata_.WriteTo(ref output, _map_metadata_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -404,6 +427,7 @@ namespace Layotto.Protocol {
       if (PubsubName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(PubsubName);
       }
+      size += metadata_.CalculateSize(_map_metadata_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -440,6 +464,7 @@ namespace Layotto.Protocol {
       if (other.PubsubName.Length != 0) {
         PubsubName = other.PubsubName;
       }
+      metadata_.Add(other.metadata_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -487,6 +512,10 @@ namespace Layotto.Protocol {
             PubsubName = input.ReadString();
             break;
           }
+          case 82: {
+            metadata_.AddEntriesFrom(input, _map_metadata_codec);
+            break;
+          }
         }
       }
     #endif
@@ -532,6 +561,10 @@ namespace Layotto.Protocol {
           }
           case 66: {
             PubsubName = input.ReadString();
+            break;
+          }
+          case 82: {
+            metadata_.AddEntriesFrom(ref input, _map_metadata_codec);
             break;
           }
         }

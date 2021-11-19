@@ -57,6 +57,8 @@ namespace Layotto.Protocol {
     static readonly grpc::Marshaller<global::Layotto.Protocol.TryLockResponse> __Marshaller_spec_proto_runtime_v1_TryLockResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.TryLockResponse.Parser));
     static readonly grpc::Marshaller<global::Layotto.Protocol.UnlockRequest> __Marshaller_spec_proto_runtime_v1_UnlockRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.UnlockRequest.Parser));
     static readonly grpc::Marshaller<global::Layotto.Protocol.UnlockResponse> __Marshaller_spec_proto_runtime_v1_UnlockResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.UnlockResponse.Parser));
+    static readonly grpc::Marshaller<global::Layotto.Protocol.GetNextIdRequest> __Marshaller_spec_proto_runtime_v1_GetNextIdRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.GetNextIdRequest.Parser));
+    static readonly grpc::Marshaller<global::Layotto.Protocol.GetNextIdResponse> __Marshaller_spec_proto_runtime_v1_GetNextIdResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.GetNextIdResponse.Parser));
     static readonly grpc::Marshaller<global::Layotto.Protocol.GetStateRequest> __Marshaller_spec_proto_runtime_v1_GetStateRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.GetStateRequest.Parser));
     static readonly grpc::Marshaller<global::Layotto.Protocol.GetStateResponse> __Marshaller_spec_proto_runtime_v1_GetStateResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.GetStateResponse.Parser));
     static readonly grpc::Marshaller<global::Layotto.Protocol.GetBulkStateRequest> __Marshaller_spec_proto_runtime_v1_GetBulkStateRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.GetBulkStateRequest.Parser));
@@ -66,6 +68,16 @@ namespace Layotto.Protocol {
     static readonly grpc::Marshaller<global::Layotto.Protocol.DeleteBulkStateRequest> __Marshaller_spec_proto_runtime_v1_DeleteBulkStateRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.DeleteBulkStateRequest.Parser));
     static readonly grpc::Marshaller<global::Layotto.Protocol.ExecuteStateTransactionRequest> __Marshaller_spec_proto_runtime_v1_ExecuteStateTransactionRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.ExecuteStateTransactionRequest.Parser));
     static readonly grpc::Marshaller<global::Layotto.Protocol.PublishEventRequest> __Marshaller_spec_proto_runtime_v1_PublishEventRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.PublishEventRequest.Parser));
+    static readonly grpc::Marshaller<global::Layotto.Protocol.GetFileRequest> __Marshaller_spec_proto_runtime_v1_GetFileRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.GetFileRequest.Parser));
+    static readonly grpc::Marshaller<global::Layotto.Protocol.GetFileResponse> __Marshaller_spec_proto_runtime_v1_GetFileResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.GetFileResponse.Parser));
+    static readonly grpc::Marshaller<global::Layotto.Protocol.PutFileRequest> __Marshaller_spec_proto_runtime_v1_PutFileRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.PutFileRequest.Parser));
+    static readonly grpc::Marshaller<global::Layotto.Protocol.ListFileRequest> __Marshaller_spec_proto_runtime_v1_ListFileRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.ListFileRequest.Parser));
+    static readonly grpc::Marshaller<global::Layotto.Protocol.ListFileResp> __Marshaller_spec_proto_runtime_v1_ListFileResp = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.ListFileResp.Parser));
+    static readonly grpc::Marshaller<global::Layotto.Protocol.DelFileRequest> __Marshaller_spec_proto_runtime_v1_DelFileRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.DelFileRequest.Parser));
+    static readonly grpc::Marshaller<global::Layotto.Protocol.GetFileMetaRequest> __Marshaller_spec_proto_runtime_v1_GetFileMetaRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.GetFileMetaRequest.Parser));
+    static readonly grpc::Marshaller<global::Layotto.Protocol.GetFileMetaResponse> __Marshaller_spec_proto_runtime_v1_GetFileMetaResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.GetFileMetaResponse.Parser));
+    static readonly grpc::Marshaller<global::Layotto.Protocol.InvokeBindingRequest> __Marshaller_spec_proto_runtime_v1_InvokeBindingRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.InvokeBindingRequest.Parser));
+    static readonly grpc::Marshaller<global::Layotto.Protocol.InvokeBindingResponse> __Marshaller_spec_proto_runtime_v1_InvokeBindingResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Layotto.Protocol.InvokeBindingResponse.Parser));
 
     static readonly grpc::Method<global::Layotto.Protocol.SayHelloRequest, global::Layotto.Protocol.SayHelloResponse> __Method_SayHello = new grpc::Method<global::Layotto.Protocol.SayHelloRequest, global::Layotto.Protocol.SayHelloResponse>(
         grpc::MethodType.Unary,
@@ -123,6 +135,13 @@ namespace Layotto.Protocol {
         __Marshaller_spec_proto_runtime_v1_UnlockRequest,
         __Marshaller_spec_proto_runtime_v1_UnlockResponse);
 
+    static readonly grpc::Method<global::Layotto.Protocol.GetNextIdRequest, global::Layotto.Protocol.GetNextIdResponse> __Method_GetNextId = new grpc::Method<global::Layotto.Protocol.GetNextIdRequest, global::Layotto.Protocol.GetNextIdResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetNextId",
+        __Marshaller_spec_proto_runtime_v1_GetNextIdRequest,
+        __Marshaller_spec_proto_runtime_v1_GetNextIdResponse);
+
     static readonly grpc::Method<global::Layotto.Protocol.GetStateRequest, global::Layotto.Protocol.GetStateResponse> __Method_GetState = new grpc::Method<global::Layotto.Protocol.GetStateRequest, global::Layotto.Protocol.GetStateResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
@@ -171,6 +190,48 @@ namespace Layotto.Protocol {
         "PublishEvent",
         __Marshaller_spec_proto_runtime_v1_PublishEventRequest,
         __Marshaller_google_protobuf_Empty);
+
+    static readonly grpc::Method<global::Layotto.Protocol.GetFileRequest, global::Layotto.Protocol.GetFileResponse> __Method_GetFile = new grpc::Method<global::Layotto.Protocol.GetFileRequest, global::Layotto.Protocol.GetFileResponse>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "GetFile",
+        __Marshaller_spec_proto_runtime_v1_GetFileRequest,
+        __Marshaller_spec_proto_runtime_v1_GetFileResponse);
+
+    static readonly grpc::Method<global::Layotto.Protocol.PutFileRequest, global::Google.Protobuf.WellKnownTypes.Empty> __Method_PutFile = new grpc::Method<global::Layotto.Protocol.PutFileRequest, global::Google.Protobuf.WellKnownTypes.Empty>(
+        grpc::MethodType.ClientStreaming,
+        __ServiceName,
+        "PutFile",
+        __Marshaller_spec_proto_runtime_v1_PutFileRequest,
+        __Marshaller_google_protobuf_Empty);
+
+    static readonly grpc::Method<global::Layotto.Protocol.ListFileRequest, global::Layotto.Protocol.ListFileResp> __Method_ListFile = new grpc::Method<global::Layotto.Protocol.ListFileRequest, global::Layotto.Protocol.ListFileResp>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ListFile",
+        __Marshaller_spec_proto_runtime_v1_ListFileRequest,
+        __Marshaller_spec_proto_runtime_v1_ListFileResp);
+
+    static readonly grpc::Method<global::Layotto.Protocol.DelFileRequest, global::Google.Protobuf.WellKnownTypes.Empty> __Method_DelFile = new grpc::Method<global::Layotto.Protocol.DelFileRequest, global::Google.Protobuf.WellKnownTypes.Empty>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DelFile",
+        __Marshaller_spec_proto_runtime_v1_DelFileRequest,
+        __Marshaller_google_protobuf_Empty);
+
+    static readonly grpc::Method<global::Layotto.Protocol.GetFileMetaRequest, global::Layotto.Protocol.GetFileMetaResponse> __Method_GetFileMeta = new grpc::Method<global::Layotto.Protocol.GetFileMetaRequest, global::Layotto.Protocol.GetFileMetaResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetFileMeta",
+        __Marshaller_spec_proto_runtime_v1_GetFileMetaRequest,
+        __Marshaller_spec_proto_runtime_v1_GetFileMetaResponse);
+
+    static readonly grpc::Method<global::Layotto.Protocol.InvokeBindingRequest, global::Layotto.Protocol.InvokeBindingResponse> __Method_InvokeBinding = new grpc::Method<global::Layotto.Protocol.InvokeBindingRequest, global::Layotto.Protocol.InvokeBindingResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "InvokeBinding",
+        __Marshaller_spec_proto_runtime_v1_InvokeBindingRequest,
+        __Marshaller_spec_proto_runtime_v1_InvokeBindingResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -251,6 +312,7 @@ namespace Layotto.Protocol {
 
       /// <summary>
       /// Distributed Lock API
+      /// A non-blocking method trying to get a lock with ttl.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -261,6 +323,18 @@ namespace Layotto.Protocol {
       }
 
       public virtual global::System.Threading.Tasks.Task<global::Layotto.Protocol.UnlockResponse> Unlock(global::Layotto.Protocol.UnlockRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Sequencer API
+      /// Get next unique id with some auto-increment guarantee
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Layotto.Protocol.GetNextIdResponse> GetNextId(global::Layotto.Protocol.GetNextIdRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -288,7 +362,7 @@ namespace Layotto.Protocol {
       }
 
       /// <summary>
-      /// Saves the state for a specific key.
+      /// Saves an array of state objects
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -332,12 +406,79 @@ namespace Layotto.Protocol {
       }
 
       /// <summary>
-      /// Publishes events to the specific topic.
+      /// Publishes events to the specific topic
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       public virtual global::System.Threading.Tasks.Task<global::Google.Protobuf.WellKnownTypes.Empty> PublishEvent(global::Layotto.Protocol.PublishEventRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Get file with stream
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="responseStream">Used for sending responses back to the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>A task indicating completion of the handler.</returns>
+      public virtual global::System.Threading.Tasks.Task GetFile(global::Layotto.Protocol.GetFileRequest request, grpc::IServerStreamWriter<global::Layotto.Protocol.GetFileResponse> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Put file with stream
+      /// </summary>
+      /// <param name="requestStream">Used for reading requests from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Google.Protobuf.WellKnownTypes.Empty> PutFile(grpc::IAsyncStreamReader<global::Layotto.Protocol.PutFileRequest> requestStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// List all files
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Layotto.Protocol.ListFileResp> ListFile(global::Layotto.Protocol.ListFileRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Delete specific file
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Google.Protobuf.WellKnownTypes.Empty> DelFile(global::Layotto.Protocol.DelFileRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Get file meta data, if file not exist,return code.NotFound error
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Layotto.Protocol.GetFileMetaResponse> GetFileMeta(global::Layotto.Protocol.GetFileMetaRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Invokes binding data to specific output bindings
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Layotto.Protocol.InvokeBindingResponse> InvokeBinding(global::Layotto.Protocol.InvokeBindingRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -609,6 +750,7 @@ namespace Layotto.Protocol {
       }
       /// <summary>
       /// Distributed Lock API
+      /// A non-blocking method trying to get a lock with ttl.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -621,6 +763,7 @@ namespace Layotto.Protocol {
       }
       /// <summary>
       /// Distributed Lock API
+      /// A non-blocking method trying to get a lock with ttl.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -631,6 +774,7 @@ namespace Layotto.Protocol {
       }
       /// <summary>
       /// Distributed Lock API
+      /// A non-blocking method trying to get a lock with ttl.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -643,6 +787,7 @@ namespace Layotto.Protocol {
       }
       /// <summary>
       /// Distributed Lock API
+      /// A non-blocking method trying to get a lock with ttl.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -666,6 +811,54 @@ namespace Layotto.Protocol {
       public virtual grpc::AsyncUnaryCall<global::Layotto.Protocol.UnlockResponse> UnlockAsync(global::Layotto.Protocol.UnlockRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_Unlock, null, options, request);
+      }
+      /// <summary>
+      /// Sequencer API
+      /// Get next unique id with some auto-increment guarantee
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Layotto.Protocol.GetNextIdResponse GetNextId(global::Layotto.Protocol.GetNextIdRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetNextId(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Sequencer API
+      /// Get next unique id with some auto-increment guarantee
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Layotto.Protocol.GetNextIdResponse GetNextId(global::Layotto.Protocol.GetNextIdRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetNextId, null, options, request);
+      }
+      /// <summary>
+      /// Sequencer API
+      /// Get next unique id with some auto-increment guarantee
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Layotto.Protocol.GetNextIdResponse> GetNextIdAsync(global::Layotto.Protocol.GetNextIdRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetNextIdAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Sequencer API
+      /// Get next unique id with some auto-increment guarantee
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Layotto.Protocol.GetNextIdResponse> GetNextIdAsync(global::Layotto.Protocol.GetNextIdRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetNextId, null, options, request);
       }
       /// <summary>
       /// Gets the state for a specific key.
@@ -756,7 +949,7 @@ namespace Layotto.Protocol {
         return CallInvoker.AsyncUnaryCall(__Method_GetBulkState, null, options, request);
       }
       /// <summary>
-      /// Saves the state for a specific key.
+      /// Saves an array of state objects
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -768,7 +961,7 @@ namespace Layotto.Protocol {
         return SaveState(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Saves the state for a specific key.
+      /// Saves an array of state objects
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -778,7 +971,7 @@ namespace Layotto.Protocol {
         return CallInvoker.BlockingUnaryCall(__Method_SaveState, null, options, request);
       }
       /// <summary>
-      /// Saves the state for a specific key.
+      /// Saves an array of state objects
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -790,7 +983,7 @@ namespace Layotto.Protocol {
         return SaveStateAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Saves the state for a specific key.
+      /// Saves an array of state objects
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -932,7 +1125,7 @@ namespace Layotto.Protocol {
         return CallInvoker.AsyncUnaryCall(__Method_ExecuteStateTransaction, null, options, request);
       }
       /// <summary>
-      /// Publishes events to the specific topic.
+      /// Publishes events to the specific topic
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -944,7 +1137,7 @@ namespace Layotto.Protocol {
         return PublishEvent(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Publishes events to the specific topic.
+      /// Publishes events to the specific topic
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -954,7 +1147,7 @@ namespace Layotto.Protocol {
         return CallInvoker.BlockingUnaryCall(__Method_PublishEvent, null, options, request);
       }
       /// <summary>
-      /// Publishes events to the specific topic.
+      /// Publishes events to the specific topic
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -966,7 +1159,7 @@ namespace Layotto.Protocol {
         return PublishEventAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Publishes events to the specific topic.
+      /// Publishes events to the specific topic
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -974,6 +1167,224 @@ namespace Layotto.Protocol {
       public virtual grpc::AsyncUnaryCall<global::Google.Protobuf.WellKnownTypes.Empty> PublishEventAsync(global::Layotto.Protocol.PublishEventRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_PublishEvent, null, options, request);
+      }
+      /// <summary>
+      /// Get file with stream
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncServerStreamingCall<global::Layotto.Protocol.GetFileResponse> GetFile(global::Layotto.Protocol.GetFileRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetFile(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Get file with stream
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncServerStreamingCall<global::Layotto.Protocol.GetFileResponse> GetFile(global::Layotto.Protocol.GetFileRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_GetFile, null, options, request);
+      }
+      /// <summary>
+      /// Put file with stream
+      /// </summary>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncClientStreamingCall<global::Layotto.Protocol.PutFileRequest, global::Google.Protobuf.WellKnownTypes.Empty> PutFile(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return PutFile(new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Put file with stream
+      /// </summary>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncClientStreamingCall<global::Layotto.Protocol.PutFileRequest, global::Google.Protobuf.WellKnownTypes.Empty> PutFile(grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncClientStreamingCall(__Method_PutFile, null, options);
+      }
+      /// <summary>
+      /// List all files
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Layotto.Protocol.ListFileResp ListFile(global::Layotto.Protocol.ListFileRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListFile(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// List all files
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Layotto.Protocol.ListFileResp ListFile(global::Layotto.Protocol.ListFileRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ListFile, null, options, request);
+      }
+      /// <summary>
+      /// List all files
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Layotto.Protocol.ListFileResp> ListFileAsync(global::Layotto.Protocol.ListFileRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListFileAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// List all files
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Layotto.Protocol.ListFileResp> ListFileAsync(global::Layotto.Protocol.ListFileRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ListFile, null, options, request);
+      }
+      /// <summary>
+      /// Delete specific file
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty DelFile(global::Layotto.Protocol.DelFileRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DelFile(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Delete specific file
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty DelFile(global::Layotto.Protocol.DelFileRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DelFile, null, options, request);
+      }
+      /// <summary>
+      /// Delete specific file
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Google.Protobuf.WellKnownTypes.Empty> DelFileAsync(global::Layotto.Protocol.DelFileRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DelFileAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Delete specific file
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Google.Protobuf.WellKnownTypes.Empty> DelFileAsync(global::Layotto.Protocol.DelFileRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DelFile, null, options, request);
+      }
+      /// <summary>
+      /// Get file meta data, if file not exist,return code.NotFound error
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Layotto.Protocol.GetFileMetaResponse GetFileMeta(global::Layotto.Protocol.GetFileMetaRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetFileMeta(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Get file meta data, if file not exist,return code.NotFound error
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Layotto.Protocol.GetFileMetaResponse GetFileMeta(global::Layotto.Protocol.GetFileMetaRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetFileMeta, null, options, request);
+      }
+      /// <summary>
+      /// Get file meta data, if file not exist,return code.NotFound error
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Layotto.Protocol.GetFileMetaResponse> GetFileMetaAsync(global::Layotto.Protocol.GetFileMetaRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetFileMetaAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Get file meta data, if file not exist,return code.NotFound error
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Layotto.Protocol.GetFileMetaResponse> GetFileMetaAsync(global::Layotto.Protocol.GetFileMetaRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetFileMeta, null, options, request);
+      }
+      /// <summary>
+      /// Invokes binding data to specific output bindings
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Layotto.Protocol.InvokeBindingResponse InvokeBinding(global::Layotto.Protocol.InvokeBindingRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return InvokeBinding(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Invokes binding data to specific output bindings
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Layotto.Protocol.InvokeBindingResponse InvokeBinding(global::Layotto.Protocol.InvokeBindingRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_InvokeBinding, null, options, request);
+      }
+      /// <summary>
+      /// Invokes binding data to specific output bindings
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Layotto.Protocol.InvokeBindingResponse> InvokeBindingAsync(global::Layotto.Protocol.InvokeBindingRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return InvokeBindingAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Invokes binding data to specific output bindings
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Layotto.Protocol.InvokeBindingResponse> InvokeBindingAsync(global::Layotto.Protocol.InvokeBindingRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_InvokeBinding, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override RuntimeClient NewInstance(ClientBaseConfiguration configuration)
@@ -995,13 +1406,20 @@ namespace Layotto.Protocol {
           .AddMethod(__Method_SubscribeConfiguration, serviceImpl.SubscribeConfiguration)
           .AddMethod(__Method_TryLock, serviceImpl.TryLock)
           .AddMethod(__Method_Unlock, serviceImpl.Unlock)
+          .AddMethod(__Method_GetNextId, serviceImpl.GetNextId)
           .AddMethod(__Method_GetState, serviceImpl.GetState)
           .AddMethod(__Method_GetBulkState, serviceImpl.GetBulkState)
           .AddMethod(__Method_SaveState, serviceImpl.SaveState)
           .AddMethod(__Method_DeleteState, serviceImpl.DeleteState)
           .AddMethod(__Method_DeleteBulkState, serviceImpl.DeleteBulkState)
           .AddMethod(__Method_ExecuteStateTransaction, serviceImpl.ExecuteStateTransaction)
-          .AddMethod(__Method_PublishEvent, serviceImpl.PublishEvent).Build();
+          .AddMethod(__Method_PublishEvent, serviceImpl.PublishEvent)
+          .AddMethod(__Method_GetFile, serviceImpl.GetFile)
+          .AddMethod(__Method_PutFile, serviceImpl.PutFile)
+          .AddMethod(__Method_ListFile, serviceImpl.ListFile)
+          .AddMethod(__Method_DelFile, serviceImpl.DelFile)
+          .AddMethod(__Method_GetFileMeta, serviceImpl.GetFileMeta)
+          .AddMethod(__Method_InvokeBinding, serviceImpl.InvokeBinding).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -1018,6 +1436,7 @@ namespace Layotto.Protocol {
       serviceBinder.AddMethod(__Method_SubscribeConfiguration, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::Layotto.Protocol.SubscribeConfigurationRequest, global::Layotto.Protocol.SubscribeConfigurationResponse>(serviceImpl.SubscribeConfiguration));
       serviceBinder.AddMethod(__Method_TryLock, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Layotto.Protocol.TryLockRequest, global::Layotto.Protocol.TryLockResponse>(serviceImpl.TryLock));
       serviceBinder.AddMethod(__Method_Unlock, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Layotto.Protocol.UnlockRequest, global::Layotto.Protocol.UnlockResponse>(serviceImpl.Unlock));
+      serviceBinder.AddMethod(__Method_GetNextId, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Layotto.Protocol.GetNextIdRequest, global::Layotto.Protocol.GetNextIdResponse>(serviceImpl.GetNextId));
       serviceBinder.AddMethod(__Method_GetState, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Layotto.Protocol.GetStateRequest, global::Layotto.Protocol.GetStateResponse>(serviceImpl.GetState));
       serviceBinder.AddMethod(__Method_GetBulkState, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Layotto.Protocol.GetBulkStateRequest, global::Layotto.Protocol.GetBulkStateResponse>(serviceImpl.GetBulkState));
       serviceBinder.AddMethod(__Method_SaveState, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Layotto.Protocol.SaveStateRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.SaveState));
@@ -1025,6 +1444,12 @@ namespace Layotto.Protocol {
       serviceBinder.AddMethod(__Method_DeleteBulkState, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Layotto.Protocol.DeleteBulkStateRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.DeleteBulkState));
       serviceBinder.AddMethod(__Method_ExecuteStateTransaction, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Layotto.Protocol.ExecuteStateTransactionRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.ExecuteStateTransaction));
       serviceBinder.AddMethod(__Method_PublishEvent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Layotto.Protocol.PublishEventRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.PublishEvent));
+      serviceBinder.AddMethod(__Method_GetFile, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Layotto.Protocol.GetFileRequest, global::Layotto.Protocol.GetFileResponse>(serviceImpl.GetFile));
+      serviceBinder.AddMethod(__Method_PutFile, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::Layotto.Protocol.PutFileRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.PutFile));
+      serviceBinder.AddMethod(__Method_ListFile, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Layotto.Protocol.ListFileRequest, global::Layotto.Protocol.ListFileResp>(serviceImpl.ListFile));
+      serviceBinder.AddMethod(__Method_DelFile, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Layotto.Protocol.DelFileRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.DelFile));
+      serviceBinder.AddMethod(__Method_GetFileMeta, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Layotto.Protocol.GetFileMetaRequest, global::Layotto.Protocol.GetFileMetaResponse>(serviceImpl.GetFileMeta));
+      serviceBinder.AddMethod(__Method_InvokeBinding, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Layotto.Protocol.InvokeBindingRequest, global::Layotto.Protocol.InvokeBindingResponse>(serviceImpl.InvokeBinding));
     }
 
   }
