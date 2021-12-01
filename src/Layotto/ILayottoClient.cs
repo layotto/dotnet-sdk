@@ -18,6 +18,38 @@ namespace Layotto
     {
         SayHelloResponse SayHello(SayHelloRequest request);
 
+        /// <summary>
+        /// invokes service without raw data
+        /// </summary>
+        /// <param name="appId"></param>
+        /// <param name="methodName"></param>
+        /// <param name="verb"></param>
+        /// <returns></returns>
+        ReadOnlyMemory<byte> InvokeMethod(string appId, string methodName, string verb);
+
+        /// <summary>
+        /// invokes service with content
+        /// </summary>
+        /// <param name="appId"></param>
+        /// <param name="methodName"></param>
+        /// <param name="verb"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        ReadOnlyMemory<byte> InvokeMethodWithContent(string appId, string methodName, string verb,
+            Invoke.DataContent content);
+
+        /// <summary>
+        /// invokes app with custom content (struct + content type).
+        /// </summary>
+        /// <param name="appId"></param>
+        /// <param name="methodName"></param>
+        /// <param name="verb"></param>
+        /// <param name="contentType"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        ReadOnlyMemory<byte> InvokeMethodWithCustomContent(string appId, string methodName, string verb,
+            string contentType, object content);
+
         List<ConfigurationItem> GetConfiguration(ConfigurationRequestItem item);
 
         /// <summary>

@@ -1,14 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Google.Protobuf;
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Net.Client;
 using Layotto.Configuration;
 using Layotto.Protocol;
 using Layotto.State;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using BulkStateItem = Layotto.State.BulkStateItem;
 using ConfigurationItem = Layotto.Configuration.ConfigurationItem;
+using Enum = System.Enum;
 using PublishEventRequest = Layotto.Pubsub.PublishEventRequest;
 using SaveConfigurationRequest = Layotto.Configuration.SaveConfigurationRequest;
 using SayHelloRequest = Layotto.Hello.SayHelloRequest;
@@ -28,9 +32,132 @@ namespace Layotto
 
         public SayHelloResponse SayHello(SayHelloRequest request)
         {
-            var req = new Protocol.SayHelloRequest {ServiceName = request.ServiceName};
+            var req = new Protocol.SayHelloRequest { ServiceName = request.ServiceName };
             var resp = _client.SayHello(req);
-            return new SayHelloResponse {Hello = resp.Hello};
+            return new SayHelloResponse { Hello = resp.Hello };
+        }
+
+        #endregion
+
+        #region InvokeApi
+
+        public ReadOnlyMemory<byte> InvokeMethod(string appId, string methodName, string verb)
+        {
+            HasRequiredInvokeArgs(appId, methodName, verb);
+            var mq = ExtractMethodAndQuery(methodName);
+            var req = new InvokeServiceRequest()
+            {
+                Id = appId,
+                Message = new CommonInvokeRequest()
+                {
+                    Method = mq.Item1,
+                    HttpExtension = QueryAndVerbToHttpExtension(mq.Item2, verb)
+                }
+            };
+
+            var resp = _client.InvokeService(req);
+            return resp.Data.Value.Memory;
+        }
+
+        public ReadOnlyMemory<byte> InvokeMethodWithContent(string appId, string methodName, string verb,
+            Invoke.DataContent content)
+        {
+            HasRequiredInvokeArgs(appId, methodName, verb);
+
+            if (content == null)
+            {
+                throw new ArgumentException(nameof(content));
+            }
+
+            var mq = ExtractMethodAndQuery(methodName);
+            var req = new InvokeServiceRequest()
+            {
+                Id = appId,
+                Message = new CommonInvokeRequest()
+                {
+                    Method = mq.Item1,
+                    ContentType = content.ContentType,
+                    Data = new Any() { Value = ByteString.CopyFrom(content.Data.Span) },
+                    HttpExtension = QueryAndVerbToHttpExtension(mq.Item2, verb)
+                }
+            };
+
+            var resp = _client.InvokeService(req);
+            return resp.Data.Value.Memory;
+        }
+
+        public ReadOnlyMemory<byte> InvokeMethodWithCustomContent(string appId, string methodName, string verb,
+            string contentType, object content)
+        {
+            HasRequiredInvokeArgs(appId, methodName, verb);
+
+            if (content == null)
+            {
+                throw new ArgumentException(nameof(content));
+            }
+
+            var mq = ExtractMethodAndQuery(methodName);
+            var req = new InvokeServiceRequest()
+            {
+                Id = appId,
+                Message = new CommonInvokeRequest()
+                {
+                    Method = mq.Item1,
+                    ContentType = contentType,
+                    Data = new Any()
+                        { Value = ByteString.CopyFrom(JsonConvert.SerializeObject(content), Encoding.UTF8) },
+                    HttpExtension = QueryAndVerbToHttpExtension(mq.Item2, verb)
+                }
+            };
+
+            var resp = _client.InvokeService(req);
+            return resp.Data.Value.Memory;
+        }
+
+        private HTTPExtension QueryAndVerbToHttpExtension(string query, string verb)
+        {
+            if (Enum.TryParse<HTTPExtension.Types.Verb>(verb, true, out var enumVerb))
+            {
+                return new HTTPExtension() { Verb = enumVerb, Querystring = query };
+            }
+
+            return new HTTPExtension() { Verb = HTTPExtension.Types.Verb.None };
+        }
+
+        /// <summary>
+        /// split method and query
+        /// </summary>
+        /// <param name="methodName"></param>
+        /// <returns>item1: method, item2: query</returns>
+        private Tuple<string, string> ExtractMethodAndQuery(string methodName)
+        {
+            var arr = methodName.Split('?');
+            var method = arr[0];
+            var query = string.Empty;
+            if (arr.Length == 2)
+            {
+                query = arr[1];
+            }
+
+            return new Tuple<string, string>(method, query);
+        }
+
+        private void HasRequiredInvokeArgs(string appId, string methodName, string verb)
+        {
+            if (string.IsNullOrEmpty(appId))
+            {
+                throw new ArgumentException(nameof(appId));
+            }
+
+            if (string.IsNullOrEmpty(methodName))
+            {
+                throw new ArgumentException(nameof(methodName));
+            }
+
+            if (string.IsNullOrEmpty(verb))
+            {
+                throw new ArgumentException(nameof(verb));
+            }
         }
 
         #endregion
@@ -45,7 +172,7 @@ namespace Layotto
                 Topic = request.Topic,
                 Data = ByteString.CopyFrom(request.Data.Span),
                 DataContentType = request.DataContentType,
-                Metadata = {request.Metadata}
+                Metadata = { request.Metadata }
             };
 
             _client.PublishEvent(req);
@@ -86,8 +213,8 @@ namespace Layotto
                 AppId = requestItem.AppId,
                 Group = requestItem.Group,
                 Label = requestItem.Label,
-                Keys = {requestItem.Keys},
-                Metadata = {requestItem.Metadata}
+                Keys = { requestItem.Keys },
+                Metadata = { requestItem.Metadata }
             };
             req.Metadata.Add(req.Metadata);
 
@@ -114,7 +241,7 @@ namespace Layotto
             {
                 StoreName = request.StoreName,
                 AppId = request.AppId,
-                Metadata = {request.Metadata}
+                Metadata = { request.Metadata }
             };
 
             foreach (var v in request.Items)
@@ -124,8 +251,8 @@ namespace Layotto
                     Label = v.Label,
                     Key = v.Key,
                     Content = v.Content,
-                    Tags = {v.Tags},
-                    Metadata = {v.Metadata}
+                    Tags = { v.Tags },
+                    Metadata = { v.Metadata }
                 });
 
             _client.SaveConfiguration(req);
@@ -139,8 +266,8 @@ namespace Layotto
                 AppId = requestItem.AppId,
                 Group = requestItem.Group,
                 Label = requestItem.Label,
-                Keys = {requestItem.Keys},
-                Metadata = {requestItem.Metadata}
+                Keys = { requestItem.Keys },
+                Metadata = { requestItem.Metadata }
             };
 
             _client.DeleteConfiguration(req);
@@ -176,9 +303,9 @@ namespace Layotto
 
             var req = new ExecuteStateTransactionRequest
             {
-                Metadata = {meta},
+                Metadata = { meta },
                 StoreName = storeName,
-                Operations = {items}
+                Operations = { items }
             };
 
             _client.ExecuteStateTransaction(req);
@@ -192,7 +319,7 @@ namespace Layotto
                 Value = data,
                 Options = options
             };
-            SaveBulkState(storeName, new List<SetStateItem> {item});
+            SaveBulkState(storeName, new List<SetStateItem> { item });
         }
 
         public void SaveBulkState(string storeName, List<SetStateItem> items)
@@ -221,8 +348,8 @@ namespace Layotto
             var req = new GetBulkStateRequest
             {
                 StoreName = storeName,
-                Keys = {keys},
-                Metadata = {meta},
+                Keys = { keys },
+                Metadata = { meta },
                 Parallelism = parallelism
             };
 
@@ -260,7 +387,7 @@ namespace Layotto
                 StoreName = storeName,
                 Key = key,
                 Consistency = sc.GetPBConsistency(),
-                Metadata = {meta}
+                Metadata = { meta }
             };
 
             var resp = _client.GetState(req);
@@ -292,7 +419,7 @@ namespace Layotto
                 Options = StateUtil.ToProtoStateOptions(opts)
             };
 
-            if (eTag != null) req.Etag = new Etag {Value = eTag.Value};
+            if (eTag != null) req.Etag = new Etag { Value = eTag.Value };
 
             _client.DeleteState(req);
         }
@@ -304,7 +431,7 @@ namespace Layotto
             if (keys == null || keys.Count == 0) return;
 
             var items = new List<DeleteStateItem>(keys.Count);
-            items.AddRange(keys.Select(key => new DeleteStateItem {Key = key}));
+            items.AddRange(keys.Select(key => new DeleteStateItem { Key = key }));
             DeleteBulkStateItems(storeName, items);
         }
 
@@ -323,10 +450,10 @@ namespace Layotto
                 var state = new Protocol.StateItem
                 {
                     Key = item.Key,
-                    Metadata = {item.Metadata},
+                    Metadata = { item.Metadata },
                     Options = StateUtil.ToProtoStateOptions(item.Options)
                 };
-                if (item.ETag != null) state.Etag = new Etag {Value = item.ETag.Value};
+                if (item.ETag != null) state.Etag = new Etag { Value = item.ETag.Value };
 
                 states.Add(state);
             }
@@ -334,7 +461,7 @@ namespace Layotto
             var req = new DeleteBulkStateRequest
             {
                 StoreName = storeName,
-                States = {states}
+                States = { states }
             };
 
             _client.DeleteBulkState(req);
