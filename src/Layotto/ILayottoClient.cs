@@ -75,6 +75,23 @@ namespace Layotto
         /// </summary>
         /// <param name="request"></param>
         void PublishEvent(PublishEventRequest request);
+        
+        /// <summary>
+        /// publishes data onto topic in specific pubsub component.
+        /// </summary>
+        /// <param name="pubsubName"></param>
+        /// <param name="topicName"></param>
+        /// <param name="data"></param>
+        void PublishEvent(string pubsubName,string topicName,Memory<byte> data);
+        
+        /// <summary>
+        /// serializes an object and publishes its contents as data (JSON) onto topic in specific pubsub component.
+        /// </summary>
+        /// <param name="pubsubName"></param>
+        /// <param name="topicName"></param>
+        /// <param name="data"></param>
+        void PublishEventFromCustomContent(string pubsubName,string topicName,object data);
+        
 
         /// <summary>
         /// provides way to execute multiple operations on a specified store.
@@ -165,6 +182,13 @@ namespace Layotto
         TryLockResponse TryLock(TryLockRequest request);
 
         UnlockResponse UnLock(UnlockRequest request);
+
+        /// <summary>
+        /// Get next unique id with some auto-increment guarantee
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        GetNextIdResponse GetNextId(GetNextIdRequest request);
 
         /// <summary>
         /// cleans up all resources created by the client.

@@ -178,6 +178,56 @@ namespace Layotto
             _client.PublishEvent(req);
         }
 
+        public void PublishEvent(string pubsubName, string topicName, Memory<byte> data)
+        {
+            if (string.IsNullOrEmpty(pubsubName))
+            {
+                throw new ArgumentException(nameof(pubsubName));
+            }
+
+            if (string.IsNullOrEmpty(topicName))
+            {
+                throw new ArgumentException(nameof(topicName));
+            }
+
+            var req = new Protocol.PublishEventRequest()
+            {
+                PubsubName = pubsubName,
+                Topic = topicName,
+                Data = ByteString.CopyFrom(data.Span)
+            };
+
+            _client.PublishEvent(req);
+        }
+
+        public void PublishEventFromCustomContent(string pubsubName, string topicName, object data)
+        {
+            if (string.IsNullOrEmpty(pubsubName))
+            {
+                throw new ArgumentException(nameof(pubsubName));
+            }
+
+            if (string.IsNullOrEmpty(topicName))
+            {
+                throw new ArgumentException(nameof(topicName));
+            }
+
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+
+            var req = new Protocol.PublishEventRequest()
+            {
+                PubsubName = pubsubName,
+                Topic = topicName,
+                Data = ByteString.CopyFromUtf8(JsonConvert.SerializeObject(data)),
+                DataContentType = "application/json",
+            };
+
+            _client.PublishEvent(req);
+        }
+
         #endregion
 
         #region ctor
@@ -479,6 +529,16 @@ namespace Layotto
         public UnlockResponse UnLock(UnlockRequest request)
         {
             return _client.Unlock(request);
+        }
+
+        #endregion
+
+
+        #region Sequencer Api
+
+        public GetNextIdResponse GetNextId(GetNextIdRequest request)
+        {
+            return _client.GetNextId(request);
         }
 
         #endregion
